@@ -6,11 +6,16 @@ module LeanKitRequest
   module ClassMethods
     REPLY_DATA_KEY  = "ReplyData"
 
+    attr_reader :raw_headers, :code, :message, :raw_response
+
     private
     def get(api_call)
-      url      = "#{LeanKitKanban::Config.uri}#{api_call}"
-      response = super(url, LeanKitKanban::Config.basic_auth_hash)
-      parse_body(response.body)
+      url = "#{LeanKitKanban::Config.uri}#{api_call}"
+      @raw_response = super(url, LeanKitKanban::Config.basic_auth_hash)
+      @raw_headers  = @raw_response.headers
+      @code         = @raw_response.code
+      @message      = @raw_response.message
+      parse_body(@raw_response.body)
     end
 
     def post(api_call, body)
@@ -18,8 +23,11 @@ module LeanKitRequest
       headers("Content-Type" => "application/json")
       request = LeanKitKanban::Config.basic_auth_hash
       request[:body] = body.to_json
-      response = super(url, request)
-      parse_body(response.body)
+      @raw_response = super(url, request)
+      @raw_headers  = @raw_response.headers
+      @code         = @raw_response.code
+      @message      = @raw_response.message
+      parse_body(@raw_response.body)
     end
 
     def parse_body(body)

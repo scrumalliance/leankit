@@ -30,7 +30,7 @@ module LeanKitKanban
       api_call = FIND_CARD_EXT.gsub("{boardID}", board_id.to_s).gsub("{externalID}", external_id.to_s)
       get(api_call)
     end
-    
+
     def self.add(board_id, lane_id, position, body)
       api_call = ADD_CARD.gsub("{boardID}", board_id.to_s).gsub("{laneID}", lane_id.to_s).gsub("{position}", position.to_s)
       post(api_call, body)
