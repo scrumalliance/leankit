@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe LeanKitKanban::Card do
+describe LeanKit::Card do
   describe :find do
     before :each do
       @board_id  = double("boardID")
@@ -9,8 +9,8 @@ describe LeanKitKanban::Card do
 
     it "gets the board card whose id is passed" do
       api_call = "/Board/#{@board_id}/GetCard/#{@card_id}"
-      LeanKitKanban::Card.should_receive(:get).with(api_call)
-      LeanKitKanban::Card.find(@board_id, @card_id)
+      LeanKit::Card.should_receive(:get).with(api_call)
+      LeanKit::Card.find(@board_id, @card_id)
     end
   end
 
@@ -22,8 +22,8 @@ describe LeanKitKanban::Card do
 
     it "gets the board card whose id is passed" do
       api_call = "/Board/#{@board_id}/GetCardByExternalId/#{@external_id}"
-      LeanKitKanban::Card.should_receive(:get).with(api_call)
-      LeanKitKanban::Card.find_by_external_id(@board_id, @external_id)
+      LeanKit::Card.should_receive(:get).with(api_call)
+      LeanKit::Card.find_by_external_id(@board_id, @external_id)
     end
   end
 
@@ -35,8 +35,8 @@ describe LeanKitKanban::Card do
 
     it "deletes the card whose ids are passed" do
       api_call = "/Board/#{@board_id}/DeleteCards"
-      LeanKitKanban::Card.should_receive(:post).with(api_call, @card_ids)
-      LeanKitKanban::Card.delete_multiple(@board_id, @card_ids)
+      LeanKit::Card.should_receive(:post).with(api_call, @card_ids)
+      LeanKit::Card.delete_multiple(@board_id, @card_ids)
     end
   end
 
@@ -48,8 +48,8 @@ describe LeanKitKanban::Card do
 
     it "deletes the board card whose id is passed" do
       api_call = "/Board/#{@board_id}/DeleteCard/#{@card_id}"
-      LeanKitKanban::Card.should_receive(:post).with(api_call, {})
-      LeanKitKanban::Card.delete(@board_id, @card_id)
+      LeanKit::Card.should_receive(:post).with(api_call, {})
+      LeanKit::Card.delete(@board_id, @card_id)
     end
   end
 
@@ -63,8 +63,8 @@ describe LeanKitKanban::Card do
 
     it "adds the card into the lane and position provided" do
       api_call = "/Board/#{@board_id}/AddCard/Lane/#{@lane_id}/Position/#{@position}"
-      LeanKitKanban::Card.should_receive(:post).with(api_call, @body)
-      LeanKitKanban::Card.add(@board_id, @lane_id, @position, @body)
+      LeanKit::Card.should_receive(:post).with(api_call, @body)
+      LeanKit::Card.add(@board_id, @lane_id, @position, @body)
     end
   end
 
@@ -76,8 +76,8 @@ describe LeanKitKanban::Card do
 
     it "updates the card using the title and description provided" do
       api_call = "/Board/#{@board_id}/UpdateCard/"
-      LeanKitKanban::Card.should_receive(:post).with(api_call, @body)
-      LeanKitKanban::Card.update(@board_id, @body)
+      LeanKit::Card.should_receive(:post).with(api_call, @body)
+      LeanKit::Card.update(@board_id, @body)
     end
   end
 
@@ -98,16 +98,16 @@ describe LeanKitKanban::Card do
 
     it "adds the cards into the lanes and positions provided" do
       api_call = "/Board/#{@board_id}/AddCards?wipOverrideComment=" + URI::encode(@wip_comment)
-      LeanKitKanban::Card.should_receive(:post).with(api_call, @cards)
-      LeanKitKanban::Card.add_multiple(@board_id, @wip_comment, @cards)
+      LeanKit::Card.should_receive(:post).with(api_call, @cards)
+      LeanKit::Card.add_multiple(@board_id, @wip_comment, @cards)
     end
   end
 
   describe :history do
     it "gets the history of card which id is provided" do
       api_call = "/Card/History/#{@board_id}/#{@card_id}"
-      LeanKitKanban::Card.should_receive(:get).with(api_call)
-      LeanKitKanban::Card.history(@board_id, @card_id)
+      LeanKit::Card.should_receive(:get).with(api_call)
+      LeanKit::Card.history(@board_id, @card_id)
     end
   end
 
@@ -116,8 +116,8 @@ describe LeanKitKanban::Card do
       @lane_id = 12
       @position = 0
       api_call = "/Board/#{@board_id}/MoveCard/#{@card_id}/Lane/#{@lane_id}/Position/0"
-      LeanKitKanban::Card.should_receive(:post).with(api_call,{})
-      LeanKitKanban::Card.move(@board_id, @card_id, @lane_id, @position)
+      LeanKit::Card.should_receive(:post).with(api_call,{})
+      LeanKit::Card.move(@board_id, @card_id, @lane_id, @position)
     end
   end
 end

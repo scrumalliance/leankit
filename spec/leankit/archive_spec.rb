@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe LeanKitKanban::Archive do
+describe LeanKit::Archive do
   describe :fetch do
     before :each do
       @board_id  = double("boardID")
@@ -8,8 +8,8 @@ describe LeanKitKanban::Archive do
 
     it "gets the board archive" do
       api_call = "/Board/#{@board_id}/Archive"
-      LeanKitKanban::Archive.should_receive(:get).with(api_call)
-      LeanKitKanban::Archive.fetch(@board_id)
+      LeanKit::Archive.should_receive(:get).with(api_call)
+      LeanKit::Archive.fetch(@board_id)
     end
   end
 end

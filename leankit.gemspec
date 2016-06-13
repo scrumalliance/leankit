@@ -4,13 +4,13 @@ lib = File.expand_path('../lib/', __FILE__)
 $:.unshift lib unless $:.include?(lib)
 
 Gem::Specification.new do |s|
-  s.name        = 'leankitkanban'
+  s.name        = 'leankit'
   s.version     = '0.1.5'
   s.date        = '2014-07-01'
-  s.summary     = "leankitkanban-#{s.version}"
-  s.description = 'Ruby Wrapper around LeanKitKanban Api'
+  s.summary     = "leankit-#{s.version}"
+  s.description = 'Ruby Wrapper around LeanKit Api'
   s.authors     = ['Marc Lainez']
-	s.email       = 'marc@spin42.com'
+  s.email       = 'marc@spin42.com'
   s.homepage    = 'http://github.com/mlainez/leankitkanban'
 
   s.files         = `git ls-files`.split("\n").reject {|path| path =~ /\.gitignore$/ || path =~ /file$/ }

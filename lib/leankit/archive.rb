@@ -1,9 +1,9 @@
-module LeanKitKanban
-  module Backlog
+module LeanKit
+  module Archive
     include HTTParty
     include LeanKitRequest
 
-    FETCH = "/Board/{boardID}/Backlog"
+    FETCH = "/Board/{boardID}/Archive"
 
     def self.fetch(board_id)
       api_call = FETCH.gsub("{boardID}", board_id.to_s)

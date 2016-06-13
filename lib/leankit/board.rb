@@ -1,4 +1,4 @@
-module LeanKitKanban
+module LeanKit
   module Board
     include HTTParty
     include LeanKitRequest

@@ -1,7 +1,7 @@
 module ConfigHelper
   def self.set_test_config
-    LeanKitKanban::Config.email    = EMAIL
-    LeanKitKanban::Config.password = PASSWORD
-    LeanKitKanban::Config.account  = TEST_ACCOUNT
+    LeanKit::Config.email    = EMAIL
+    LeanKit::Config.password = PASSWORD
+    LeanKit::Config.account  = TEST_ACCOUNT
   end
 end

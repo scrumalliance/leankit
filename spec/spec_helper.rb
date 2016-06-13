@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'support/config_helper'
-require 'leankitkanban'
+require 'leankit'
 
 EMAIL        = "test@test.com"
 PASSWORD     = "mysecret"

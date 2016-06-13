@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe LeanKitKanban::Board do
+describe LeanKit::Board do
   before :all do
     ConfigHelper.set_test_config
   end
@@ -8,8 +8,8 @@ describe LeanKitKanban::Board do
   describe :all do
     it "gets all boards for that account" do
       api_call = "/Boards"
-      LeanKitKanban::Board.should_receive(:get).with(api_call)
-      LeanKitKanban::Board.all
+      LeanKit::Board.should_receive(:get).with(api_call)
+      LeanKit::Board.all
     end
   end
 
@@ -20,8 +20,8 @@ describe LeanKitKanban::Board do
 
     it "gets the board whose id is passed as parameter" do
       api_call = "/Boards/#{@board_id}"
-      LeanKitKanban::Board.should_receive(:get).with(api_call)
-      LeanKitKanban::Board.find(@board_id)
+      LeanKit::Board.should_receive(:get).with(api_call)
+      LeanKit::Board.find(@board_id)
     end
   end
 
@@ -32,8 +32,8 @@ describe LeanKitKanban::Board do
 
     it "gets the identifiers of the board whose id is passed as parameter" do
       api_call = "/Board/#{@board_id}/GetBoardIdentifiers"
-      LeanKitKanban::Board.should_receive(:get).with(api_call)
-      LeanKitKanban::Board.get_identifiers(@board_id)
+      LeanKit::Board.should_receive(:get).with(api_call)
+      LeanKit::Board.get_identifiers(@board_id)
     end
   end
 
@@ -45,8 +45,8 @@ describe LeanKitKanban::Board do
 
     it "gets a greater version of the board than the one passed" do
       api_call = "/Board/#{@board_id}/BoardVersion/#{@version_id}/GetNewerIfExists"
-      LeanKitKanban::Board.should_receive(:get).with(api_call)
-      LeanKitKanban::Board.get_newer_if_exists(@board_id, @version_id)
+      LeanKit::Board.should_receive(:get).with(api_call)
+      LeanKit::Board.get_newer_if_exists(@board_id, @version_id)
     end
   end
 
@@ -58,8 +58,8 @@ describe LeanKitKanban::Board do
 
     it "gets a greater version of the board than the one passed" do
       api_call = "/Board/#{@board_id}/BoardVersion/#{@version_id}/GetBoardHistorySince"
-      LeanKitKanban::Board.should_receive(:get).with(api_call)
-      LeanKitKanban::Board.get_board_history_since(@board_id, @version_id)
+      LeanKit::Board.should_receive(:get).with(api_call)
+      LeanKit::Board.get_board_history_since(@board_id, @version_id)
     end
   end
 end
